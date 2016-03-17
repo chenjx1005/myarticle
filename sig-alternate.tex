@@ -1,0 +1,406 @@
+% This is "sig-alternate.tex" V2.0 May 2012
+% This file should be compiled with V2.5 of "sig-alternate.cls" May 2012
+%
+% This example file demonstrates the use of the 'sig-alternate.cls'
+% V2.5 LaTeX2e document class file. It is for those submitting
+% articles to ACM Conference Proceedings WHO DO NOT WISH TO
+% STRICTLY ADHERE TO THE SIGS (PUBS-BOARD-ENDORSED) STYLE.
+% The 'sig-alternate.cls' file will produce a similar-looking,
+% albeit, 'tighter' paper resulting in, invariably, fewer pages.
+%
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V2.5) produces:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) NO page numbers
+%
+% as against the acm_proc_article-sp.cls file which
+% DOES NOT produce 1) thru' 3) above.
+%
+% Using 'sig-alternate.cls' you have control, however, from within
+% the source .tex file, over both the CopyrightYear
+% (defaulted to 200X) and the ACM Copyright Data
+% (defaulted to X-XXXXX-XX-X/XX/XX).
+% e.g.
+% \CopyrightYear{2007} will cause 2007 to appear in the copyright line.
+% \crdata{0-12345-67-8/90/12} will cause 0-12345-67-8/90/12 to appear in the copyright line.
+%
+% ---------------------------------------------------------------------------------------------------------------
+% This .tex source is an example which *does* use
+% the .bib file (from which the .bbl file % is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission, you *NEED* to 'insert'
+% your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% ================= IF YOU HAVE QUESTIONS =======================
+% Questions regarding the SIGS styles, SIGS policies and
+% procedures, Conferences etc. should be sent to
+% Adrienne Griscti (griscti@acm.org)
+%
+% Technical questions _only_ to
+% Gerald Murray (murray@hq.acm.org)
+% ===============================================================
+%
+% For tracking purposes - this is V2.0 - May 2012
+
+\documentclass{sig-alternate}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\begin{document}
+%
+% --- Author Metadata here ---
+\conferenceinfo{WOODSTOCK}{'97 El Paso, Texas USA}
+%\CopyrightYear{2007} % Allows default copyright year (20XX) to be over-ridden - IF NEED BE.
+%\crdata{0-12345-67-8/90/01}  % Allows default copyright data (0-89791-88-6/97/05) to be over-ridden - IF NEED BE.
+% --- End of Author Metadata ---
+
+\title{Deep CTR Prediction in Display Advertising}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{1} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+Junxuan Chen%\titlenote{Dr.~Trovato insisted his name be first.}\\
+       %\affaddr{Institute for Clarity in Documentation}\\
+       %\affaddr{1932 Wallamaloo Lane}\\
+       %\affaddr{Wallamaloo, New Zealand}\\
+       %\email{chenjunxuan@sjtu.edu.cn}
+}
+\date{30 July 1999}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+\maketitle
+\begin{abstract}
+	%Click through rate (CTR) prediction of image ads is the core task in online display advertising system. Traditional method tackles this problem by using logistic regression with millions of handcrafted features. However, the handcrafted features of images are inflexible and heuristic. Meanwhile, logistic regression lacks the ability to extract complex nonlinear features among high-dimensional features. In this paper we introduce a novel deep neural network (DNN) model that directly predict the CTR of an image ad from raw pixels and other basic features. The DNN model contains convolution layers to extract image features and fully-connected layers that can learn nonlinear features among basic and image features. We evaluate our net on a real world dataset with over 50 million records. The experiment results demonstrate the effectiveness and efficiency of our method.  
+	Click through rate (CTR) prediction of image ads is the core task of online display advertising systems,
+	and logistic regression (LR) has been frequently applied as the prediction model. However, LR model lacks the ability of extracting complex and intrinsic nonlinear features from handcrafted high-dimensional image features, which limits its effectiveness. To solve this issue, in
+	this paper, we introduce a novel deep neural network (DNN) based model that directly predicts the CTR
+	of an image ad based on raw image pixels and other basic features in one step. The DNN model employs convolution layers
+	to automatically extract representative visual features from images, and nonlinear CTR features are then learned from visual features and other contextual features by using fully-connected layers. Empirical evaluations on a real world dataset with over 50 million records demonstrate the effectiveness and efficiency of this method.
+	
+\end{abstract}
+
+% A category with the (minimum) three required fields
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+
+\terms{Theory}
+
+\keywords{DNN, CNN, Click through rate, Image Ads, Display Advertising}
+
+\section{Introduction}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{ad}
+	\caption{Display ads on an e-commerce web page.}
+	\label{fig:ad}
+\end{figure}
+Online display advertising generates a significant amount of revenue by showing image ads on various web pages.  More and more advertisers prefer displaying image ads (Figure \ref{fig:ad}) because they are more attractive and comprehensible compared with textual ads. This has led to a huge demand on approaches that are able to choose the most proper image ad to show for a particular user when he or she is visiting a web page. 
+
+In most online advertising system, predicting a user response for a display advertisement, especially click through rate (CTR), is the core task of ads allocation. Typically an ads system  predicts and ranks the CTR of available ads based on contextual information, and then shows the top ads to the users. In general, prediction models are learned from past click data based on machine learning techniques. 
+
+%features
+Features that are used to represent an ad are extremely important in a machine learning model. In recent years, to make the CTR prediction model more accurate, many researchers use millions of features to describe a user's response record (we call it an ad impression). Typically, an image ad impression has basic features and visual features. The basic features are information about users, products and ad positions in a web page, etc. Visual features describe the visual appearance of an image ad at different levels. For example, color and  texture are low level features, while face and other contextual objects are high level features. Low level and high level features both have the power to influence the CTR of an image ad (Figure \ref{fig:compare}).
+
+%models
+Among different machine learning models that have been applied to predict ads CTR using the above features, Logistic regression (LR) is the mostly well-known and widely-used one due to its simplicity and effectiveness. Also, LR is easy to be parallelized on a distributed computing system thus it is not challenging to make it work on billions of samples. Being able to handle big data efficiently is necessary for a typical advertising system especially when the prediction model needs to be updated frequently to deal with new ads. However, LR is a linear model which is inferior in extracting complex and effective nonlinear features from handcrafted feature pools. Though one can mitigate this issue by computing the second-order conjunctions of the features, it still can not extract higher-order nonlinear representative features and may cause feature explosive if we continue increasing the conjunction order. %cause feature explosive.  
+
+To address these problems, other methods such as factorization machine, decision tree, neural network are widely used. Though these methods can extract non-linear features, they only deal with basic features and handcrafted visual features, which are inferior in describing images. In this paper, we propose a deep neural network (DNN) to directly predict the CTR of an image ad from raw pixels and other basic features. Our DNN model contains convolution layers to extract representative visual features and then fully-connected layers that can learn the complex and effective nonlinear features among basic and visual features. The main contributions of this work can be summarized as follows:
+\begin{enumerate}
+	\item To the best of our knowledge, it is the first paper that proposes an end to end deep model that  directly predicts the CTR of image ads in one step. Experiments show that our deep net model outperforms state-of-the-art methods in a real world dataset with more than 50 million user response records. 
+	\item Efficient methods are introduced to tackle the challenge of  high-dimensionality and huge data amount in the model training stage. The proposed methods reduce the training time significantly and make it feasible to train on a normal PC with GPUs even with large-scale real world training data.
+\end{enumerate}
+
+The paper is organized as follows. Section 2 introduces the related work, followed by an overview of our scheme in Section 3. In Section 4, we describe the proposed DNN model in detail, and we show the challenges in the training stage as well as our solutions  in Section 5. Section 6 presents the experimental results, and then Section 7 is the conclusion.   
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{compare}
+	\caption{CTRs of image ads (a) and (b) are 1.27\% and 0.83\%. (b) suffers from  low contrast between product and background obviously. CTRs of (c) and (d) are 2.40\% and 2.23\%. We find too many subjects in an men's clothing ad brings  negative effect. (the number of impressions of each ad is sufficiently high to make the CTR has statistical meaning).}
+	\label{fig:compare}
+\end{figure}
+\section{Related Work}
+We consider display advertising CTR prediction and deep neural network are two mostly related areas to our work.
+\subsection{Display Advertising CTR prediction}
+Since the display advertising has taken a large share of online advertising market, many works addressing the CTR prediction problem have been published. In \cite{richardson2007predicting,chakrabarti2008contextual}, authors handcraft many features from raw data and use logistic regression (LR) to predict the click-through rate. \cite{chapelle2014simple} also uses LR to deal with the CTR problem and scales it to
+billions of samples and millions of parameters on a distributed learning system.  In \cite{oentaryo2014predicting},  a Hierarchical Importance-aware Factorization Machine (HIFM) is introduced, which provides a generic latent factor framework that incorporates importance weights and hierarchical learning. In \cite{dave2010learning}, boosted decision trees have been used to build a prediction model. In \cite{he2014practical},  a model which combines decision
+trees with logistic regression has been proposed, and outperforms either of the above two models. \cite{baqapuri2014using} combines artificial neural networks with decision trees and also brings  an improvement. All of these methods are very effective when deal with ads without images. However, when it comes to the images ads, they can only use pre-extracted image features, which is less flexible to take account of the unique properties of different datasets.
+
+Therefore, the image features in display advertisement have received more and more attention. In \cite{azimi2012impact,cheng2012multimedia}, the impact of  visual appearance  on user's response in online display advertising is considered at first time. They extract over 30 handcrafted features from ad images and build a CTR prediction model using image and basic  features.   \cite{Mo:2015:IFL:2832747.2832769} is the most related work  in literature with us, in which convolution neural network (CNN) is used to extract image features from ads. However, there are two important differences between their method and ours.   First, they do not consider basic features when extracting image features using CNN. Second,  when predicting the CTR they  use logistic regression which lacks the ability in exploring the complex relations between image and basic features. Most of the information in their image features is redundant  such as product category which is included in basic features. As a result, their model only achieves limited improvements when combining both kinds of features. Worse still, when the dataset contains many categories of products, it can hardly converge when training. Our model uses an end to end model to predict the CTR of image ads using basic features and raw images in one step, in which image features can be seen as  supplementary to the basic features.
+\subsection{Deep Neural Network} 
+In recent years, deep neural network has achieved big breakthroughs in many fields. In computer vision filed, convolution neural network (CNN) \cite{NIPS2012_4824} is one of the most efficient tools to extract effective image features from raw image pixels.  In speech recognition, deep belief network (DBN) \cite{hinton2012deep} is used and much better performance is obtained comparing with Gaussian mixture models. DNN has also been used in CTR prediction in recent public competitions\footnote{https://www.kaggle.com/c/avazu-ctr-prediction}\footnote{https://www.kaggle.com/c/criteo-display-ad-challenge}. In these two competitions, only basic features are available. A four-layer DNN which only uses basic features achieves better or comparable performance than LR with feature conjunction, factorization machines, decision trees, etc. Comparing with this DNN, our model can extract more powerful features by taking consideration  of the visual features in image ads. 
+\section{Overview}\label{Overview}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.41\textwidth]{pic}
+	\caption{The overall architecture of the network. The output of each fully-connected layer is then pass through a ReLU nonlinear activation function.}
+	\label{fig:net}
+\end{figure}
+As aforementioned,
+in this paper, each record of user's behavior on an ad is called an impression. denoted by $x$. Each impression has an image $u$ with a resolution of around $120 \times 200$. Besides the image, the basic feature vector is denoted by $v \in \mathbf{R}^{d}$ such as the  user's gender, product's category, ad position in the web page, and usually $d$ can be very large, say, from a few thousand to many million.
+Our goal is to predict the probability that a user clicks on an image ad given these features. We will still use logistic regression to map our predicted CTR value $\hat{y}$ to 0 to 1, thus the CTR prediction problem can be written as:
+\begin{gather}
+\hat{y} = \frac{1}{1+e^{-z}} \\
+z = f(x)
+\end{gather}
+where $f(.)$ is what we are going to learn from training data, that is, the embedding function that maps an impression to a real value $z$.  Suppose we have $N$ impressions $\mathbf{X}=[x_{1}, x_{2}...x_{N}]$ and each with a label $y_{i} \in \{0,1\}$ depends on the user's feedback, 0 means \emph{not clicked} while 1 means \emph{clicked}. Then the learning problem is defined as minimizing a Logarithmic Loss (Logloss):
+\begin{equation}
+L(\mathbf{W}) = -\frac{1}{N} \sum_{i} (y_{i} \log \hat{y}_{i} + (1-y_{i}) \log (1-\hat{y}_{i}) )  \\ + \lambda || \mathbf{W}||^{2}
+\end{equation}
+where $\mathbf{W}$ is the parameters of the embedding function $f(.) $ and $\lambda$ is a regularization parameter that controls the model complexity.
+
+In this model, what we need to learn is the embedding function $f(.)$. Conventional methods extract handcrafted visual features from raw image $u$ and concatenate them with basic features $v$, then learn linear or nonlinear transformations to obtain the embedding function. In this paper we learn this function directly from raw pixels of an image ad and the basic features using one integrated deep neural network.  
+\section{Network Architecture}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{convnet}
+	\caption{The architecture of the 17-layer \emph{Convnet} in our model.}
+	\label{fig:convnet}
+\end{figure}
+Considering basic features and raw images come from two different domains, we cannot simply concatenate them together directly in the network. Training two separate networks is also inferior since it cannot take into account the correlations between the two features. As a result, our network adopts two different sub-networks to deal with basic features and raw images, respectively, and then uses multiple fully-connected layers to capture their correlations. 
+
+As illustrated in Figure \ref{fig:net},  a  deep neural network called DeepCTR is designed which contains three parts. 
+One part, \emph{Convnet}, takes raw image $u$ as input and follows with a convolution network. 
+The output of the \emph{Convnet} is a feature vector of the raw image. 
+The second part which is called \emph{Basicnet}, takes basic features $v$ as input and follows a fully-connected layer to reduce the dimensionality. 
+Subsequently, outputs of \emph{Convnet} and \emph{Basicnet} are concatenated into one vector and fed to two fully-connected layers. 
+The output of the last fully-connected layer is a real value $z$.
+This part is called \emph{Combnet}. On the top of the whole network, Logloss is computed as described in Section \ref{Overview}.
+
+The design of \emph{Convnet} is inspired by the network in \cite{he2015deep,simonyan2014very}, as shown in Figure \ref{fig:convnet}. The network consists of 17 convolution layers. The first convolution layer uses $5 \times 5$ convolution kernels. Following first layer, there are four groups and each has four layers with $3 \times 3$ kernels.  We do not build a very deep network such as more than 50 layers in consideration of the trade off between performance and training time. We pre-train the \emph{Convnet} on the images in training dataset with category labels. We use two fully-connected layers with 1024 hidden nodes (we call them \emph{fc18} and \emph{fc19}), a fully-connected layer with 96-way outputs (we call it \emph{fc20}) and a softmax after the \emph{Convnet} in pre-training period.  Since our unique images set is smaller (to be detailed in Section 6) than ImageNet \cite{deng2009imagenet}, we use half number of outputs in each group comparing with \cite{he2015deep}. After pre-training,  a 128-way fully-connected layer is connected behind the last convolution layer.  Then we train the whole DeepCTR using Logloss from end to end.
+\section{Speed Up Training}
+Typically a deep neural network has millions of parameters which make it difficult to train. With the development of GPUs, one can train a deep CNN with 1 million images in two days on a single machine. However, it is still time infeasible for our network since we have more than 50 million samples. Moreover, the dimensionality of basic features is nearly 200,000 which leads to much more parameters in our network than a normal deep neural network. Directly training our network on a single machine may take hundreds of days to converge according to a rough estimation. Even using multi-machine can hardly resolve the training problem.
+
+To make it feasible to train our DeepCTR model on a single machine, we adopt two techniques: using sparse fully-connected layer and a new data sampling scheme.
+\subsection{Sparse Fully-Connected Layer}
+In CTR prediction, the basic feature of an ad impression includes user information like gender, age, purchasing power, and ad information like ad ID, ad category, ad zone, etc. This information is usually encoded by one-hot encoding which makes the feature dimension very large. For example, it is nearly 200,000 in our dataset. Consequently, the first fully-connected layer using the basic feature as input has around 60 million parameters, which is similar to the number of  parameters in  AlexNet \cite{NIPS2012_4824}. However, the basic feature is extremely sparse due to the one-hot encoding. Using sparse matrix in first fully-connected layer can largely reduce the computing complexity and GPU memory usage.
+
+In our model, we use compressed sparse row (CSR) format to represent a batch of basic features $V$. When computing network forward, sparse matrix multiplication can be used. When backward pass, we only need to update the weights that link to small numbers of nonzero dimensions.  
+\subsection{Data Sampling}
+Another crucial issue in CTR model training is data amount. The training data in CTR prediction usually has lots of noises. To train a robust CTR prediction model, we need  millions of ad samples to reduce the effect of those noises. Though the sparse fully-connected layer can largely reduce the forward-backward time in \emph{Basicnet}, training the \emph{Convnet} on such a large dataset still requires too much time if we adopt an ordinary training strategy. In this paper, we propose a much faster training method based on an intrinsic property of the image ads click records, that is, many impressions share a same image. Though the total size of the dataset is very large, the number of unique images is relatively smaller. Since a good many of basic features can be processed quickly by sparse fully-connected layer, in this paper we employ a data sampling method that groups basic features of a same image together to tackle this problem, which is detailed as follows.
+
+Suppose the unique  images set in our dataset is $\mathbf{U}$, the set of impressions related to an image $u$ are $\mathbf{X}_{u}$ and basic features are $\mathbf{V}_{u}$. At each iteration, suppose the training batch size is $n$, we sample $n$ images $U$ from $\mathbf{U}$. Together with each image $u \in U$, we sample $k$ basic features $V_{u}$ from $\mathbf{V}_{u}$ with replacement. Thus we have $n$ images and $kn$ basic features in each batch.   After \emph{Convnet}, we have $n$ image features. For each feature vector $conv_{u}$ we copy it $k$ times to have $C_{u}$ and send them forward to \emph{Combnet} along with $V_{u}$. In backforward time, the gradient of each image feature vector can be computed as:
+\begin{equation}\label{eq:gradient}
+\nabla(conv_{u}) = \frac{1}{k} \sum_{c \in C_{u}} \nabla(c)  
+\end{equation}
+The training method is summarized in Alg. \ref{alg:training} and Alg. \ref{alg:fb}.
+\begin{algorithm}[tb]
+	\caption{Training a DeepCTR network}
+	\label{alg:training}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\renewcommand{\algorithmicensure}{\textbf{Output:}}
+		\Require: Network $Net$ with parameter $\mathbf{W}$, unique images set $\mathbf{U}$, basic features set $\mathbf{V}$, labels $\mathbf{Y}$, batch size $n$, basic feature sample number $k$.  
+		\Ensure: Network for CTR prediction, $Net$
+		\State Initialize $Net$.
+		\State Compute the sample probability $p(u)$ of each image $u$,
+		\begin{equation}
+		p(u) = \frac{\# \mathbf{V}_{u}}{\sum_{u' \in \mathbf{U}} \# \mathbf{V}_{u'}}
+		\end{equation}
+		\Repeat
+		\State Sample $n$ images $U$ according to $p(u)$. 
+		\State For each $u$ in $U$, sample $k$ basic features $V_{u}$ from $\mathbf{V}_{u}$ with labels $Y_{u}$ uniformly with replacement. 
+		\State $forward\_backward(Net, U, V, Y)$.
+		\Until{$Net$ converges}
+	\end{algorithmic}
+\end{algorithm}  
+
+\begin{algorithm}[tb]
+	\caption{$forward\_backward$}
+	\label{alg:fb}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\renewcommand{\algorithmicensure}{\textbf{Output:}}
+		\Require: Network $Net$ with parameters $\mathbf{W}$ which contains a \emph{Convnet}, \emph{Basicnet} and \emph{Combnet}, image samples $U$, basic features $V$, labels $Y$, basic feature sample number $k$. 
+		
+		
+		
+		\State Compute the feature vector $conv_{u}$ of each image $u$:
+		$
+		conv = net\_foward(Convnet, U)
+		$
+		\State Copy each feature vector $k$ times so we have $C$.
+		
+		\State  $loss = net\_forward(Basicnet \text{ and } Combnet, V, C)$.
+		\State  $\nabla(C) = net\_backward(Combnet \text{ and } Basicnet, loss)$.
+		\State Compute $\nabla(conv_{u})$ of each image $u$ according to Eq. \ref{eq:gradient}.
+		\State $net\_backward(Convnet, \nabla(conv))$.
+		\State Update network $Net$.
+	\end{algorithmic}
+\end{algorithm}  
+\section{Experiment}
+In this section, a series of experiments are conducted to verify the superiority of our DeepCTR net.
+\subsection{Experimental Setting}
+\subsubsection{Dataset}
+The experiment data comes from a commercial advertising platform (will expose it in the final version) in a  random week of year 2015. We use the data from first six days as our training data and the data from last day as testing data.  As described in Section \ref{Overview}, each impression consists of an ad $x$ and a label $y$.  An impression has an image $u$ (Figure \ref{fig:compare}) and a basic feature vector $v$.  The size of training data is 50 million while testing set is 9 million. We have 101,232 unique images in training data and 17,728 unique images in testing data. 3,090 images in testing set are never shown in training set. The basic feature $v$ is one-hot encoded and has a dimensionality of 171,858. Following information is consisted by basic features:
+\begin{enumerate}
+	\item Ad zone. The display zone of an ad on the web page. We have around 700 different ad zones in web pages.
+	\item Ad group. The ad group is a small set of ads. The ads in an ad group share almost same  products but different ad images (in Figure \ref{fig:compare}, (a) and (b) belong to an ad group while (c) and (d) belong to another group). We have over 150,000 different ad groups in our dataset. Each ad group consists less than 20 different   ads.
+	\item Ad target. The target groups of the ad.  We have 10 targets in total.
+	\item Ad category. The category of the product in ads. We have 96 different categories, like clothing, food, household appliances. 
+	\item User. The user information includes user's gender, age, purchasing power, etc. 
+\end{enumerate}
+\subsubsection{Baselines}
+We use LR only with basic features as our first baseline. We call this method \emph{lr basic} in following experiments.  We also evaluate a two hidden layers DNN model only using basic features. The numbers of outputs of two hidden layers  are 128 and 256 respectively. The model can be seen as our DeepCTR net without the \emph{Convnet} part. This method is called \emph{dnn basic}. We further replace the \emph{Convnet} in our DeepCTR net with pre-extracted features, SIFT \cite{lowe1999object} with bag of words and the outputs of different layers of the pre-trained  \emph{Convnet}. We call these two methods \emph{dnn sift} and \emph{dnn layername} (for example \emph{dnn conv17}). 
+\subsubsection{Evaluation Metric}
+We use two popular metrics to evaluate the experiment result, Logloss and the area under receiver operator curve (AUC). Both of these metrics are relative to \emph{lr basic}. Logloss can quantify the accuracy of the predicted click probability. AUC measures the ranking quality of the prediction. 
+\subsubsection{Network Configuration}
+In our \emph{Convnet},  a $112 \times 112$ random crop  and horizontal mirror for the input image are used for data augmentation. Each group has four convolution layers followed by a batch normalization \cite{ioffe2015batch} and a ReLU \cite{nair2010rectified} activation. The stride of the first convolution layer is 2 if the output size of a group halves.  We initialize the layer weights as in  \cite{he2015delving}. When pre-training the \emph{Convnet} on our image dataset with category labels,  we use SGD with a mini-batch size of 128. The learning rate starts from 0.01 and is divided by 10 when test loss plateaus. The pre-trained model converges after around 120 epochs. The weight decay of the net is set as 0.0001 and momentum is 0.9. 
+
+After pre-training  \emph{Convnet}, we train our DeepCTR model from end to end. Other parts of our net use the same  initialization method as  \emph{Convnet}. We choose the size of mini-batch $n$ as 20, and $k = 500$. That is to say, we deal with 10,000 impressions per batch.  We start with the learning rate 0.1, and divided it by 10 after 12, 20 and 28 epochs. The \emph{Convnet} uses a smaller initial learning rate 0.001. The weight decay of the whole net is set as 0.00005. The \emph{dnn basic}, \emph{dnn sift} and \emph{dnn layername} use the same learning strategy. 
+
+We implement our network on C++ Caffe toolbox \cite{jia2014caffe} with some modifications like sparse fully-connected layer.
+%\subsection{Results and Discussion}
+%\begin{table}
+%	\centering
+%	\caption{AUC and Logloss.}
+%	\label{table:AUC}
+%	\begin{tabular}{|c|c c|} \hline
+%		method & AUC(\%) & Logloss\\  \hline
+%		lr basic& 73.45 & 0.14359\\ 
+%		dnn basic& 73.78 & 0.14303\\ 
+%		dnn sift & 73.85 & 0.14295\\ \hline
+%		dnn conv13 & 74.42 & 0.14235\\ 
+%		dnn conv17 & 74.42 & 0.14235\\ 
+%		dnn fc19 & 74.42 & 0.14235\\ 
+%		dnn fc20 & 74.42 & 0.14235\\ \hline
+%		DeepCTR & 74.64 & 0.14200\\ 
+%		3 DeepCTRs & 74.84 & 0.14173\\ \hline
+%	\end{tabular}
+%\end{table}
+\begin{table*}
+	\centering
+	\caption{relative AUC and Logloss. We omit \emph{dnn} of methods using deep neural network with pre-extracted features.}
+	\label{table:AUC}
+	\begin{tabular}{|c|c cc|c c c c c|c c|} \hline
+		method  & lr basic & basic &sift &conv13 &conv17 &fc18 &fc19 &fc20 &DeepCTR &3 DeepCTRs \\  \hline
+		AUC(\%) & -        & 0.45  &0.54 &  1.25 &1.32   &1.31 &1.11 &0.97 &1.62    &\textbf{1.89} \\  \hline
+		Logloss(\%)&-      & -0.39 &-0.45& -0.79 & -0.86 &-0.86&-0.74&-0.69&-1.11   & \textbf{-1.30}\\ \hline
+	\end{tabular}
+\end{table*}
+
+\subsection{Results and Discussion}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.38\textwidth]{BN_test}
+	\caption{Test Logloss of the DeepCTR net with/without batch normalization in \emph{Combnet}. }
+	\label{fig:bn}
+\end{figure} 
+In this section we compare the results of various methods and the influence of some network structures. First we compare the results of  models with deep features in different levels. We plot the two metrics of \emph{dnn conv13}, \emph{dnn conv17}, \emph{dnn fc18}, \emph{dnn fc19}, and \emph{dnn fc20} (Table \ref{table:AUC}). From the results, we find that \emph{dnn conv17} and \emph{dnn fc18} achieve best performance. Image features in these layers are of relatively high level but not highly group invariant \cite{zeiler2014visualizing}. Comparing with following fully-connected layers, they have more discriminations in same category. Comparing with previous layers, they contain  features in a sufficiently high-level  which are superior in describing the objects in images. Consequently, we connect \emph{conv17} layer in our DeepCTR model. We do not choose \emph{fc18} because it needs higher computations. We have also tried to compare our DeepCTR with the approach in \cite{Mo:2015:IFL:2832747.2832769}. However the model in \cite{Mo:2015:IFL:2832747.2832769} does not converge on our dataset.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.45\textwidth]{levels}
+%	\caption{(a) and (b) are the histograms of outputs of \emph{Basicnet} and \emph{Convnet} without batch normalization while (c) and (d) with batch normalization. }
+%	\label{fig:levels}
+%\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.38\textwidth]{bn_hist_fix_3}
+	\caption{(a) and (b) are the histograms of outputs of \emph{Basicnet} and \emph{Convnet} without batch normalization while (c) and (d) with batch normalization. }
+	\label{fig:bn_comb}
+\end{figure}
+
+Comparison between baselines is shown in Table \ref{table:AUC} too. From the result, it can be seen that a deep neural network and image features can both improve the CTR prediction accuracy. Comparing with handcrafted features, like SIFT, deep features have stronger power in describing the image, which leads to a significant improvement in the prediction accuracy. Our DeepCTR model goes one step further by using an end to end learning scheme. Ensemble of multiple deep networks usually brings better performance, so we train 3 DeepCTR models and average the their predictions, and it gives the best AUC and Logloss. Compared with \emph{lr basic}, the AUC increase will bring us 1$\sim$2 percent CTR increase in the advertising system (according to online experiments), which will lead to over 1 million earnings growth per day for an 100 million ads business.  
+
+We further  explore the influence of network structures in our DeepCTR model empirically. First we find that the batch normalization in the \emph{Combnet} can speed up training and largely improve performance (Figure \ref{fig:bn}). To investigate the reason, we show the histogram (Figure \ref{fig:bn_comb}) of the outputs of \emph{Convnet} and $BaiscNet$. We can see from the histogram  that two outputs have significant difference in scale and invariance. Simply concatenating  these two different kinds of data stream  makes the following fully-connected layer hard to converge. 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.38\textwidth]{dropout_test_train}
+	\caption{Logloss of the DeepCTR net with/without dropout in \emph{Combnet}. Dashed lines denote training loss, and bold lines denote testing loss.}
+	\label{fig:dropout}
+\end{figure}
+
+Dropout \cite{srivastava2014dropout} is an efficient way to prevent over-fitting problem in deep neural network. Most deep convolution networks remove the dropout because batch normalization can regularize the models. However, in our DeepCTR model, we find it still suffers from over-fitting without dropout. We compare the loss curves of the model with/without dropout in the last two fully-connected layers. We can see that the model with dropout achieves lower testing Logloss, though we need more time to reach the lowest test loss.
+
+
+We also evaluate the performance of the sparse fully-connected layer and our data sampling method. We plot computing time and memory overhead (Table \ref{table:time&memory}) of the sparse fully-connected layer comparing with dense layer. Loss curves of training and testing are exactly the same since sparse fully-connected layer does not change any computing results in the net, so we do not plot them. From this table we can find dense layer  requires much more computing time and memory than sparse one. Using sparse layer allows a lager batch size when training, which makes the net easier to converge. 
+
+\begin{table}
+	\centering
+	\caption{forward-backward time and GPU memory overhead of first fully-connected layer with a batch size of 1,000.}
+	\label{table:time&memory}
+	\begin{tabular}{|c|c|c|} \hline
+		& time (ms) & memory (MB)\\ \hline
+		sparse layer & 6.67 &397 \\ \hline
+		dense layer & 189.56 &4667 \\ \hline
+	\end{tabular}
+\end{table}
+
+Finally, we investigate whether the performance of our model descends using our data sampling method. We compare our method with a throughout shuffle of the dataset. Since training a DNN model with convolution layers on 50 million samples takes too much time, we only conduct experiments on  \emph{dnn conv17} model. We believe that our  DeepCTR model performs similarly with \emph{dnn conv17} model. From Table \ref{table:datasampling} we can see the performance of the model is not influenced by the data sampling method. At the same time, our method only costs 1/500 of the training time compared with the approach without data sampling. Using this data sampling method, training our DeepCTR model from end to end only takes around 12 hours to converge on a NVIDIA TESLA k20m GPU with 5 GB memory, which is acceptable for an online advertising system requiring daily update. 
+\begin{table}
+	\centering
+	\caption{AUC and Logloss of \emph{dnn conv17} model with our data sampling and a throughout shuffle.}
+	\label{table:datasampling}
+	\begin{tabular}{|c|c|c|} \hline
+		& AUC(\%) & Logloss(\%)\\ \hline
+		data sampling & 1.32 & -0.86\\ \hline
+		throughout shuffle & 1.31 & -0.85\\ \hline
+	\end{tabular}
+\end{table}
+
+
+
+
+
+
+\section{Conclusions}
+CTR prediction plays an important role in online display advertising business. Accurate prediction of the CTR of ads not only increases the revenue of web publishers, also improves the user experience. In this paper we propose an end to end integrated deep network to predict the CTR of image ads.  It consists of \emph{Convnet}, \emph{Basicnet} and \emph{Combnet}. \emph{Convnet} is used to extract image features automatically while \emph{Basicnet} is used to reduce the dimensionality of basic features. \emph{Combnet} can learn complex and effective non-linear features from these two kinds of  features. The usage of sparse fully-connected layer and data sampling techniques speeds up the training process significantly.
+We evaluate DeepCTR model on a 50 million real world dataset. The empirical result demonstrates 
+the effectiveness and efficiency of our DeepCTR model. 
+
+
+
+%
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+
+\end{document}
