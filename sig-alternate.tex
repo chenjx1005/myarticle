@@ -48,6 +48,7 @@
 \documentclass{sig-alternate}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+
 \begin{document}
 %
 % --- Author Metadata here ---
@@ -137,15 +138,17 @@ Junxuan Chen%\titlenote{Dr.~Trovato insisted his name be first.}\\
 	\caption{Display ads on an e-commerce web page.}
 	\label{fig:ad}
 \end{figure}
-Online display advertising generates a significant amount of revenue by showing image ads on various web pages.  More and more advertisers prefer displaying image ads (Figure \ref{fig:ad}) because they are more attractive and comprehensible compared with textual ads. This has led to a huge demand on approaches that are able to choose the most proper image ad to show for a particular user when he or she is visiting a web page. 
+Online display advertising generates a significant amount of revenue by showing image ads on various web pages \cite{chapelle2014simple}.   The ad publishers like Google and Yahoo sell some ad zones on different web pages to advertisers. Advertisers show their ads to users when they browse the web pages. Publishers get paid by advertisers every time the ad display leads to some desired action  such as clicking or purchasing according to the payment options such as cost-per-click (CPC) or cost-per-conversion (CPA) \cite{mahdian2007pay}. The expected revenue for publishers is then the product of the bid price and click-through rate (CTR) or conversion rate (CVR). In this paper, we focus on CPC and predict the CTR of display ads.
 
-In most online advertising systems, predicting a user response for a display advertisement, especially click through rate (CTR), is the core task of ads allocation. Typically an ads system  predicts and ranks the CTR of available ads based on contextual information, and then shows the top ads to the users. In general, prediction models are learned from past click data based on machine learning techniques. 
+Recently, more and more advertisers prefer displaying image ads (Figure \ref{fig:ad}) because they are more attractive and comprehensible compared with textual ads.   To maximize the revenue of publishers,  this has led to a huge demand on approaches that are able to choose the most proper image ad to show for a particular user when he or she is visiting a web page so that to maximize the CTR. 
+
+Therefore, in most online advertising systems, predicting the CTR is the core task of ads allocation. Typically an ads system  predicts and ranks the CTR of available ads based on contextual information, and then shows the top ads to the users. In general, prediction models are learned from past click data based on machine learning techniques \cite{chapelle2014simple,  richardson2007predicting, he2014practical, dave2010learning, zhang2016deep,mcmahan2013ad}.
 
 %features
-Features that are used to represent an ad are extremely important in a machine learning model. In recent years, to make the CTR prediction model more accurate, many researchers use millions of features to describe a user's response record (we call it an ad impression). Typically, an image ad impression has basic features and visual features. The basic features are information about users, products and ad positions in a web page, etc. Visual features describe the visual appearance of an image ad at different levels. For example, color and  texture are low level features, while face and other contextual objects are high level features. Low level and high level features both have the power to influence the CTR of an image ad (Figure \ref{fig:compare}).
+Features that are used to represent an ad are extremely important in a machine learning model. In recent years, to make the CTR prediction model more accurate, many researchers use millions of features to describe a user's response record (we call it an ad impression). Typically, an image ad impression has basic features and visual features. The basic features are information about users, products and ad positions in a web page, etc. Visual features describe the visual appearance of an image ad at different levels. For example, color and  texture are low level features, while face and other contextual objects are high level features. Low level and high level features may both have the power to influence the CTR of an image ad (Figure \ref{fig:compare}).
 
 %models
-Among different machine learning models that have been applied to predict ads CTR using the above features, Logistic regression (LR) is the mostly well-known and widely-used one due to its simplicity and effectiveness. Also, LR is easy to be parallelized on a distributed computing system thus it is not challenging to make it work on billions of samples. Being able to handle big data efficiently is necessary for a typical advertising system especially when the prediction model needs to be updated frequently to deal with new ads. However, LR is a linear model which is inferior in extracting complex and effective nonlinear features from handcrafted feature pools. Though one can mitigate this issue by computing the second-order conjunctions of the features, it still can not extract higher-order nonlinear representative features and may cause feature explosion if we continue increasing the conjunction order. %cause feature explosive.  
+Among different machine learning models that have been applied to predict ads CTR using the above features, Logistic regression (LR) is the mostly well-known and widely-used one due to its simplicity and effectiveness. Also, LR is easy to be parallelized on a distributed computing system thus it is not challenging to make it work on billions of samples \cite{chapelle2014simple}. Being able to handle big data efficiently is necessary for a typical advertising system especially when the prediction model needs to be updated frequently to deal with new ads. However, LR is a linear model which is inferior in extracting complex and effective nonlinear features from handcrafted feature pools. Though one can mitigate this issue by computing the second-order conjunctions of the features, it still can not extract higher-order nonlinear representative features and may cause feature explosion if we continue increasing the conjunction order. %cause feature explosive.  
 
 To address these problems, other methods such as factorization machine, decision tree, neural network are widely used. Though these methods can extract non-linear features, they only deal with basic features and handcrafted visual features, which are inferior in describing images. In this paper, we propose a deep neural network (DNN) to directly predict the CTR of an image ad from raw pixels and other basic features. Our DNN model contains convolution layers to extract representative visual features and then fully-connected layers that can learn the complex and effective nonlinear features among basic and visual features. The main contributions of this work can be summarized as follows:
 \begin{enumerate}
@@ -298,9 +301,10 @@ The experiment data comes from a commercial advertising platform (will expose it
 	\item Ad category. The category of the product in ads. We have 96 different categories, like clothing, food, household appliances. 
 	\item User. The user information includes user's gender, age, purchasing power, etc. 
 \end{enumerate}
+Besides above basic features, we do not use any handcrafted conjunction features. We hope that  our model can learn  effective non-linear features automatically from feature set.
 
 \subsubsection{Baselines}
-We use LR only with basic features as our first baseline. We call this method \emph{lr basic} in following experiments. To verify that our DNN model has the ability of extracting effective high-order features,  a Factorization Machine implemented by LibFM \cite{rendle2012factorization}  only with basic features is our second baseline.  We call it \emph{FM basic}.  Then we  evaluate a two hidden layers DNN model only using basic features. The numbers of outputs of two hidden layers  are 128 and 256 respectively. The model can be seen as our DeepCTR net without the \emph{Convnet} part. This method is called \emph{dnn basic}. We further replace the \emph{Convnet} in our DeepCTR net with pre-extracted features, SIFT \cite{lowe1999object} with bag of words and the outputs of different layers of the pre-trained  \emph{Convnet}. We call these two methods \emph{dnn sift} and \emph{dnn layername} (for example \emph{dnn conv17}). 
+We use LR only with basic features as our first baseline. We call this method \emph{lr basic} in following experiments. To verify that our DNN model has the ability of extracting effective high-order features,  a Factorization Machine implemented by LibFM \cite{rendle2012factorization}  only with basic features is our second baseline.  We call it \emph{FM basic}. We use 8 factors for 2-way interactions and MCMC for parameter learning in \emph{FM basic}. Then we  evaluate a two hidden layers DNN model only using basic features. The numbers of outputs of two hidden layers  are 128 and 256 respectively. The model can be seen as our DeepCTR net without the \emph{Convnet} part. This method is called \emph{dnn basic}. We further replace the \emph{Convnet} in our DeepCTR net with pre-extracted features, SIFT \cite{lowe1999object} with bag of words and the outputs of different layers of the pre-trained  \emph{Convnet}. We call these two methods \emph{dnn sift} and \emph{dnn layername} (for example \emph{dnn conv17}). 
 \subsubsection{Evaluation Metric}
 We use two popular metrics to evaluate the experiment result, Logloss and the area under receiver operator curve (AUC).  Logloss can quantify the accuracy of the predicted click probability. AUC measures the ranking quality of the prediction. Since our dataset comes from a real commercial platform,  both of these metrics use relative numbers comparing with \emph{lr basic}.
 \subsubsection{Network Configuration}
@@ -415,8 +419,8 @@ Finally, we investigate whether the performance of our model descends using our 
 \subsection{Visualizing the Convnet}
 \begin{figure*}
 	\centering
-	\includegraphics[width=0.9\textwidth]{Convnet}
-	\caption{Logloss of the DeepCTR net with/without dropout in \emph{Combnet}. Dashed lines denote training loss, and bold lines denote testing loss.}
+	\includegraphics[width=0.95\textwidth]{vis}
+	\caption{Saliency map of the image ads. Brighter area plays a more important role in effecting the CTR of ads.}
 	\label{fig:vis}
 \end{figure*}
 Visualizing the CNN can help us better understand exactly what we have learned. In this section, we follow the saliency map visualization method used in \cite{simonyan2013deep}. We use a linear score model to approximate our DeepCTR for \emph{click} or \emph{no click}:
@@ -430,9 +434,16 @@ w  = \frac{\partial z}{\partial U} \Big|_{U_{0}}
 \end{equation}
 In our case, the image $U$ is in RGB format and has three channels at pixel $U_{i,j}$. To derive a single class saliency value $M_{i,j}$ of each pixel, we take the maximum  absolute value of $w_{i,j}$ across RGB channels $c$: 
 \begin{equation}
-M_{i,j} = \text{max}_{c} w_{i,j}(c)
+M_{i,j} = \text{max}_{c} |w_{i,j}(c)|
 \end{equation}
-Some of the typical visualization examples are shown in Figure \ref{fig:vis}. In  these examples, red area plays a more important role in impacting the CTR of the ad. We can see that faces, characters and main objects in ads are generally more important.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{vis_compare}
+	\caption{Saliency map of an image ad. We can see that cats, texture, and characters all have effect on the CTR. }
+	\label{fig:vis_compare}
+\end{figure}
+Some of the typical visualization examples are shown as heat maps  in Figure \ref{fig:vis}. In  these examples, brighter area plays a more important role in impacting the CTR of the ad. We can see main objects in ads are generally more important. However,  some low level features like texture, characters, and even background can have effect on the CTR of the ad. In another example (Figure \ref{fig:vis_compare}), it is more clearly to see that visual features in both high level and low level have effectiveness. From the visualization of the \emph{Convnet}, we can find that  the task of display ads CTR prediction is quite different from object classification where high level features dominate in the top layers.  It  also   gives an explanation why an end-to-end training can improve the model. Apparently, the \emph{Convnet} can be trained to extract features that are more particularly useful for CTR prediction.
 \section{Conclusions}
 CTR prediction plays an important role in online display advertising business. Accurate prediction of the CTR of ads not only increases the revenue of web publishers, also improves the user experience. In this paper we propose an end to end integrated deep network to predict the CTR of image ads.  It consists of \emph{Convnet}, \emph{Basicnet} and \emph{Combnet}. \emph{Convnet} is used to extract image features automatically while \emph{Basicnet} is used to reduce the dimensionality of basic features. \emph{Combnet} can learn complex and effective non-linear features from these two kinds of  features. The usage of sparse fully-connected layer and data sampling techniques speeds up the training process significantly.
 We evaluate DeepCTR model on a 50 million real world dataset. The empirical result demonstrates 
