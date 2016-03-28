@@ -417,7 +417,12 @@ Finally, we investigate whether the performance of our model descends using our 
 	\end{tabular}
 \end{table}
 
-
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{vis_compare}
+	\caption{Saliency map of an image ad. We can see that cats, texture, and characters all have effect on the CTR. }
+	\label{fig:vis_compare}
+\end{figure}
 \subsection{Visualizing the Convnet}
 \begin{figure*}
 	\centering
@@ -439,12 +444,6 @@ In our case, the image $U$ is in RGB format and has three channels at pixel $U_{
 M_{i,j} = \text{max}_{c} |w_{i,j}(c)|
 \end{equation}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.45\textwidth]{vis_compare}
-	\caption{Saliency map of an image ad. We can see that cats, texture, and characters all have effect on the CTR. }
-	\label{fig:vis_compare}
-\end{figure}
 Some of the typical visualization examples are shown as heat maps  in Figure \ref{fig:vis}. In  these examples, brighter area plays a more important role in impacting the CTR of the ad. We can see main objects in ads are generally more important. However,  some low level features like texture, characters, and even background can have effect on the CTR of the ad. In another example (Figure \ref{fig:vis_compare}), it is more clearly to see that visual features in both high level and low level have effectiveness. From the visualization of the \emph{Convnet}, we can find that  the task of display ads CTR prediction is quite different from object classification where high level features dominate in the top layers.  It  also   gives an explanation why an end-to-end training can improve the model. Apparently, the \emph{Convnet} can be trained to extract features that are more particularly useful for CTR prediction.
 \section{Conclusions}
 CTR prediction plays an important role in online display advertising business. Accurate prediction of the CTR of ads not only increases the revenue of web publishers, also improves the user experience. In this paper we propose an end to end integrated deep network to predict the CTR of image ads.  It consists of \emph{Convnet}, \emph{Basicnet} and \emph{Combnet}. \emph{Convnet} is used to extract image features automatically while \emph{Basicnet} is used to reduce the dimensionality of basic features. \emph{Combnet} can learn complex and effective non-linear features from these two kinds of  features. The usage of sparse fully-connected layer and data sampling techniques speeds up the training process significantly.
